@@ -1,0 +1,2 @@
+use md5sum --check [file.md5] to automatically check the files listed in the .md5 files against the indicated checksum
+

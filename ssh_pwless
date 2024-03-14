@@ -1,0 +1,2 @@
+ssh without passwords requires remote home directory to have no write permissions for anyone but the user.
+

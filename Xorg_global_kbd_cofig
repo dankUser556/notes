@@ -1,0 +1,7 @@
+#Use this config in /etc/X11/xorg.conf.d/00-keyboard.conf to set a keyboard layout globally/permanently in all xsessions
+
+Section "InputClass"
+	Identifire "system-keyboard"
+	MatchIsKeyboard "on"
+	Option "XkbLayout" "us,dvorak"
+EndSection

@@ -1,0 +1,2 @@
+tar -I pigz -cpf [output archive] [source dir]
+

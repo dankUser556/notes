@@ -1,0 +1,6 @@
+When a text file with a shebang is used as if it is an executable in a unix-like operating system, the program loader mechanism parses the rest of the files initial line as an interpreter directive.
+
+The loader executes the specified interpreter program, passing to it as an argument the path that was initially used when attempting to run the script, so that the program may use the file as input data.
+
+[Source: Wikipedia - Shebang(Unix)]
+

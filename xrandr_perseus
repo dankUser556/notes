@@ -1,0 +1,56 @@
+xrandr is a utility found in the xorg-xrandr package, 
+and is part of the group xorg-xapps
+
+cvt is found in libxcvt, and is a dependency of xorg-server and tigervnc
+
+To see current output, just use xrandr with no options.
+______________________________________________________________________________________
+ ┌──(user)8=D-host)-[~]
+ └─$ xrandr
+ Screen 0: minimum 320 x 200, current 1366 x 768, maximum 16384 x 16384
+ eDP-1 connected primary 1366x768+0+0 (normal left inverted right x axis y axis) 256mm x 144mm
+    1366x768      60.01*+  40.00  
+    1280x720      60.00    59.99    59.86    59.74  
+    1024x768      60.04    60.00  
+    960x720       60.00  
+    ...
+    320x180       59.84    59.32  
+ HDMI-1 disconnected (normal left inverted right x axis y axis)
+ ┌──(user)8=D-host)-[~]
+ └─$ 
+______________________________________________________________________________________
+
+To get custom settings for a resolution (i.e 1280x720) use
+______________________________________________________________________________________
+ ┌──(user)8=D-host)-[~]
+ └─$ cvt 1280 720
+ # 1280x720 59.86 Hz (CVT 0.92M9v) hsync: 44.77 kHz; pclk: 74.50 MHz
+ Modeline "1280x720_60.00"  74.50  1280 1344 1472 1664  720 723 728 748 -hsync +vsync
+ ┌──(user)8=D-host)-[~]
+ └─$ 
+______________________________________________________________________________________
+
+Now create a new xrandr mode for it
+(note: it seems that the spaces are important for parsing the new mode?")
+______________________________________________________________________________________
+ ┌──(user)8=D-host)-[~]
+ └─$ xrandr --newmode "1280x720_60.00"  74.50  1280 1344 1472 1664  720 723 728 748 -hsync +vsync
+ ┌──(user)8=D-host)-[~]
+ └─$ 
+______________________________________________________________________________________
+
+Add the mode to the desired output device
+______________________________________________________________________________________
+ ┌──(user)8=D-host)-[~]
+ └─$ xrandr --addmode VGA1 1280x720_60.00
+ ┌──(user)8=D-host)-[~]
+ └─$ 
+______________________________________________________________________________________
+
+Set the new mode to active
+______________________________________________________________________________________
+ ┌──(user)8=D-host)-[~]
+ └─$ xrandr --output VGA1 --mode 1280x720_60.00
+ ┌──(user)8=D-host)-[~]
+ └─$ 
+______________________________________________________________________________________

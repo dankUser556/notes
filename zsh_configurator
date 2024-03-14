@@ -1,0 +1,7 @@
+To run the completion configuration, use:
+ $ autoload -Uz compinstall
+ $ compinstall
+
+To run the zsh configurator...?
+ $ autoload -Uz zsh-newuser-install
+ $ zsh-newuser-install -f

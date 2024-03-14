@@ -1,0 +1,16 @@
+install ntfs-3g and ms-sys
+ http://ms-sys.sourceforge.net/#Download
+use fdisk to create one MBR style partition, type 7 (HPFS/NTFS/exFAT)
+enable boot flag
+
+format as ntfs
+ # mkfs.ntfs -f /dev/sdX1
+
+Install ms-sys
+ # ms-sys -7 /dev/sdX
+Write extended boot record (EBR)
+ # ms-sys -n /dev/sdX1
+
+Mount usb and iso
+Copy all files
+ # cp -av /iso/* /mnt/usb/

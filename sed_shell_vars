@@ -1,0 +1,15 @@
+Here Strings
+Similar to heredoc, use 
+ COMMAND <<< STRING
+syntax to use a string literal as input via stdin for the proceeding commaand.
+Similar to using 
+
+ $ echo "Here is a sentence" | sed 's/a/one/'
+
+Here is a method for outputting an altered variable.
+Notably it is shell agnostic.
+
+ $ var="Here is a sentence."
+ $ sed 's/a/one/' <<< $var
+ Here is one sentence.
+

@@ -1,0 +1,36 @@
+#
+# This is a modified/annotated version of a post from:
+#  https://winworldpc.com/product/att-system-v-unix/2-x
+# By user uglygoose
+#
+
+Install using qemu:
+
+# Create a virtual hard disk for the system
+ $ qemu-img create -f raw sysv.img 200M
+# -f raw means create the image in raw (-f)ormat
+
+# Initialize qemu's i386 virtual environment
+ $ qemu-system-i386 -hda sysv.img -fda /path/to/floppies/base01.v2.1a.img -boot a
+# -hda is a deprecated block device option suitable for legacy PC only!!!
+#   It sets the proceeding file as disk 0. -hd{a,b,c,d} are available for disks {0,1,2,3} respectively.
+# -fda sets the proceeding file as floppy disk 0. -fdb is available for disk 1.
+# -boot a indicates to use drive a as boot.
+# 
+# Interesting options/notes
+#  - "-boot order=[a,b,c,d,n],menu=[on,off],splash=[splash_logo.{bmp,jpg}]"
+#  - a,b,c,d,n are floppies a,b, hdd c, cdrom d, network n
+#  -menu indicates whether to use a boot select menu (bios)
+
+If you are using linux, you can add "-accel kvm" flag to speed up qemu:
+ $ qemu-system-i386 -hda sysv.img -fda /path/to/floppies/base01.v2.1a.img -boot a -accel kvm
+
+To change floppy during installation, press "Ctrl + Alt + 2" and enter:
+ $ change floppy0 /path/to/floppy.img
+press "Ctrl + Alt + 1" to return to qemu's vga output.
+
+After installation, boot SystemV with:
+ $ qemu-system-i386 -hda sysv.img
+or
+ $ qemu-system-i386 -hda sysv.img -accel kvm
+in a linux environment.

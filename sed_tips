@@ -1,0 +1,2 @@
+use -n with p in sed to print only changed lines. Ex "sed -n 's/old/new/p'"
+
